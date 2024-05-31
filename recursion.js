@@ -23,18 +23,30 @@ function longest(words) {
 /** everyOther: return a string with every other letter. */
 
 function everyOther(str) {
-
+  // base case
+  if (str.length === 0) {
+    return ""
+  }
+  // normal case
+  return str[0] + everyOther(str.slice(2))
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
 function isPalindrome(str) {
-
+  // base case
+  if (str.length <= 1) {
+    return true
+  }
+  // normal case
+  return ((str[0] == str[str.length-1]) && isPalindrome(str.slice(1, str.length-1)))
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
 function findIndex(arr, val) {
+  // base case
+  // normal case
 
 }
 
