@@ -46,11 +46,11 @@ function isPalindrome(str) {
 
 function findIndex(arr, val) {
   // base cases
-  if (arr[0] === val) {
-    return 0
-  }
   if (arr.length === 0) {
     return -1
+  }
+  if (arr[0] === val) {
+    return 0
   }
   // normal case
   return 1 + findIndex(arr.slice(1), val)
@@ -59,13 +59,34 @@ function findIndex(arr, val) {
 /** revString: return a copy of a string, but in reverse. */
 
 function revString(str) {
-
+  // base case
+  if (str.length < 2) {
+    return str
+  }
+  // normal case
+  return revString(str.slice(1)) + str[0]
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
 function gatherStrings(obj) {
-
+  // base case
+  if (Object.values(obj).length === 0) {
+    return []
+  }
+  // normal case
+  const allStrs = []
+  for (const val of Object.values(obj)) {
+    if (typeof(val) === 'string') {
+      allStrs.push(val)
+    }
+    else if (typeof(val) === 'object') {
+      for (const str of gatherStrings(val)) {
+        allStrs.push(str)
+      }
+    }
+  }
+  return allStrs
 }
 
 /** binarySearch: given a sorted array of numbers, and a value,
