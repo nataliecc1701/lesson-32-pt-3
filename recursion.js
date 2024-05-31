@@ -93,7 +93,21 @@ function gatherStrings(obj) {
  * return the index of that value (or -1 if val is not present). */
 
 function binarySearch(arr, val) {
-
+  // base cases
+  half = Math.floor(arr.length/2)
+  if (arr[half] === val) {
+    return half
+  }
+  if (arr.length < 2) {
+    return -1
+  }
+  // normal cases
+  if (arr[half] > val) {
+    return binarySearch(arr.slice(0,half), val)
+  }
+  if (arr[half] < val) {
+    return half + 1 + binarySearch(arr.slice(half+1), val)
+  }
 }
 
 module.exports = {
