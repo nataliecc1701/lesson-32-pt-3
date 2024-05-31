@@ -53,7 +53,11 @@ function findIndex(arr, val) {
     return 0
   }
   // normal case
-  return 1 + findIndex(arr.slice(1), val)
+  const idx = findIndex(arr.slice(1), val)
+  if (idx >= 0) {
+    return 1 + findIndex(arr.slice(1), val)
+  }
+  else return -1
 }
 
 /** revString: return a copy of a string, but in reverse. */
@@ -94,7 +98,7 @@ function gatherStrings(obj) {
 
 function binarySearch(arr, val) {
   // base cases
-  half = Math.floor(arr.length/2)
+  const half = Math.floor(arr.length/2)
   if (arr[half] === val) {
     return half
   }
@@ -106,7 +110,11 @@ function binarySearch(arr, val) {
     return binarySearch(arr.slice(0,half), val)
   }
   if (arr[half] < val) {
-    return half + 1 + binarySearch(arr.slice(half+1), val)
+    const idx = binarySearch(arr.slice(half+1), val)
+    if (idx >= 0) {
+      return half + 1 + idx
+    }
+    else return -1
   }
 }
 
